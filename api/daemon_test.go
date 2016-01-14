@@ -8,6 +8,7 @@ import (
 	"github.com/NebulousLabs/Sia/types"
 )
 
+// TestVersion checks that the version returned by the daemon is correct.
 func TestVersion(t *testing.T) {
 	if testing.Short() {
 		t.SkipNow()
