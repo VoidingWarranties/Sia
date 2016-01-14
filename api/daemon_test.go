@@ -93,3 +93,22 @@ func TestConstants(t *testing.T) {
 		t.Errorf("/daemon/constants reporting bad siacoin precisiondown: expected %v, got %v", types.SiacoinPrecision, sc.SiacoinPrecision)
 	}
 }
+
+// TestStop checks that a call to /daemon/stop returns a response with Success == true
+// TestStop does not check that the daemon stopped.
+func TestStop(t *testing.T) {
+	if testing.Short() {
+		t.SkipNow()
+	}
+	st, err := createServerTester("TestStop")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer st.server.Close()
+	var response struct{ Success bool }
+	st.getAPI("/daemon/stop", &response)
+	if response.Success != true {
+		t.Fatal("/daemon/stop not reporting success")
+	}
+	// TODO: check that the daemon has stopped.
+}
