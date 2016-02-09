@@ -290,17 +290,6 @@ func (tp *TransactionPool) AcceptTransactionSet(ts []types.Transaction) error {
 	go tp.gateway.Broadcast("RelayTransactionSet", ts)
 	tp.updateSubscribersTransactions()
 
-	// COMPAT v0.4.6
-	//
-	// Transactions must be broadcast individually as well so that they will be
-	// seen by older nodes that don't support the "RelayTransactionSet" RPC.
-	go func() {
-		for _, t := range ts {
-			tp.gateway.Broadcast("RelayTransaction", t)
-			time.Sleep(time.Second * 15)
-		}
-	}()
-
 	return nil
 }
 
