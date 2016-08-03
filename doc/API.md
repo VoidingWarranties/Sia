@@ -188,6 +188,9 @@ Consensus
 | ---------------------------- | --------- |
 | [/consensus](#consensus-get) | GET       |
 
+For examples and detailed descriptions of request and response parameters,
+refer to [/doc/api/Consensus.md]
+
 #### /consensus [GET]
 
 returns information about the consensus set, such as the current block height.
