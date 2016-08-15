@@ -711,33 +711,32 @@ The input byte array should be 80 bytes that form the solved block header. *Unli
 Renter
 ------
 
-Queries:
+| Route                                                         | HTTP verb |
+| ------------------------------------------------------------- | --------- |
+| [/renter](#renter-get)                                        | GET       |
+| [/renter](#renter-post)                                       | POST      |
+| [/renter/contracts](#rentercontracts-get)                     | GET       |
+| [/renter/downloads](#renterdownloads-get)                     | GET       |
+| [/renter/files](#renterfiles-get)                             | GET       |
+| [/renter/delete/___*siapath___](#renterdeletesiapath-post)    | POST      |
+| [/renter/download/___*siapath___](#renterdownloadsiapath-get) | GET       |
+| [/renter/rename/___*siapath___](#renterrenamesiapath-post)    | POST      |
+| [/renter/upload/___*siapath___](#renteruploadsiapath-post)    | POST      |
 
-* /renter/allowance          [GET]
-* /renter/allowance          [POST]
-* /renter/downloads          [GET]
-* /renter/files              [GET]
-* /renter/load               [POST]
-* /renter/loadascii          [POST]
-* /renter/share              [GET]
-* /renter/shareascii         [GET]
-* /renter/delete/{siapath}   [POST]
-* /renter/download/{siapath} [GET]
-* /renter/rename/{siapath}   [POST]
-* /renter/upload/{siapath}   [POST]
+For examples and detailed descriptions of request and response parameters,
+refer to [Renter.md](/doc/api/Renter.md).
 
 #### /renter/allowance [GET]
 
-Function: Returns the current contract allowance.
+returns the current contract allowance.
 
-Parameters: none
-
-Response:
-```
-struct {
-	funds  types.Currency    (string)
-	hosts  uint64
-	period types.BlockHeight (uint64)
+###### JSON Response
+// TODO: fix this.
+```javascript
+{
+  "funds": "1234", // hastings
+  "hosts":  24,
+  "period": types.BlockHeight (uint64)
 }
 ```
 'funds' is the number of hastings allocated for file contracts in the given
